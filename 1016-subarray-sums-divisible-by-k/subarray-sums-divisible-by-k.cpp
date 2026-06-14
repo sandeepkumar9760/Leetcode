@@ -7,10 +7,10 @@ public:
         int count = 0;
         for(int i=0; i<nums.size(); i++){
             sum += nums[i];
-            int target =  sum % k;
-            if(target<0){
-                target = target + k;
-            }
+            int target =  ((sum % k)+k)%k;
+            // if(target<0){
+            //     target = target + k;
+            // }
             if(map.find(target)!=map.end()){
                 count+=map[target];
             }
