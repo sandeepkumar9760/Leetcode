@@ -6,6 +6,7 @@ public:
         int one_count = 0;
         unordered_map<int,int>map;
         int res = 0;
+        map[0] = -1;
         for(int i=0; i<n; i++){
             if(nums[i]==0){
                 zero_count++;
@@ -13,9 +14,6 @@ public:
                 one_count++;
             }
             int diff = zero_count - one_count;
-            if(diff==0){
-                res = max(res , i+1);
-            }
             if(map.find(diff)!=map.end()){
                 int len = i-map[diff];
                 res = max(res,len);
