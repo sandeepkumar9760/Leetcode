@@ -19,6 +19,7 @@ public:
             if(map.find(diff)!=map.end()){
                 int len = i-map[diff];
                 res = max(res,len);
+                continue;
             }else{
                 map[diff]=i;
             }
