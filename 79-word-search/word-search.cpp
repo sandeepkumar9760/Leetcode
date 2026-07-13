@@ -5,7 +5,7 @@ public:
         if(row<0 || row>=board.size() || col<0 || col>=board[0].size() || visited[row][col]==1 || board[row][col]!=word[idx]){
             return false;
         }
-        if(idx==word.size() || idx==word.size()-1){
+        if(idx==word.size()-1 || idx==word.size()){
             return true;
 
         }
