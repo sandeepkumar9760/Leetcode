@@ -15,8 +15,9 @@ public:
         if(!root || root->val==n1 || root->val==n2){
             return root;
         }
-        TreeNode* left = lowestCommonAncestor(root->left,p,q);
+        
         TreeNode* right = lowestCommonAncestor(root->right,p,q);
+        TreeNode* left = lowestCommonAncestor(root->left,p,q);
 
         if(left==nullptr){
             return right;
