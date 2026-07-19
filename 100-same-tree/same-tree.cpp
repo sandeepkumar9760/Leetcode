@@ -15,6 +15,7 @@ public:
         if((p && !q) || (!p && q)) return false;
         if(!p && !q) return true;
         bool  val = p->val==q->val;
+        if(!val) return false;
         bool left = isSameTree(p->left,q->left);
         bool right = isSameTree(p->right,q->right);
 
