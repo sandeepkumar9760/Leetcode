@@ -28,9 +28,6 @@ public:
         }
         return temp->val;
     }
-    bool hasnext(){
-        return !st.empty();
-    }
 private:
     void push_all(TreeNode* node){
         while(node){
