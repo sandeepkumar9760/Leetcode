@@ -17,7 +17,7 @@ public:
                 if(nums[mid]<=target && nums[end]>=target){
                     start = mid+1;
                 }else{
-                    end = end-1;
+                    end = mid-1;
                 }
             }
         }
