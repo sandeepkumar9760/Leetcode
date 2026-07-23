@@ -3,7 +3,10 @@ public:
     bool check(int mid , vector<int>&piles , int h){
         long long time_taken = 0;
         for(int i=0; i<piles.size(); i++){
-            time_taken += 0ll+(piles[i]+mid-1)/mid;
+            // time_taken += 0ll+(piles[i]+mid-1)/mid;
+            int idx = piles[i]%mid;
+            time_taken += 0ll + (piles[i]/mid);
+            idx < mid && idx>0 ? time_taken++ : time_taken;
         }
         return time_taken<=h;
     }
