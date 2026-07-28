@@ -1,13 +1,13 @@
 class Solution {
 public:
-    bool search(int row ,vector<vector<int>>& matrix , int target){
+    bool bst(int start_row , vector<vector<int>>&matrix , int target){
         int start = 0;
         int end = matrix[0].size()-1;
         while(start<=end){
             int mid = start + (end-start)/2;
-            if(matrix[row][mid]==target){
+            if(matrix[start_row][mid]==target){
                 return true;
-            }else if(target<matrix[row][mid]){
+            }else if(matrix[start_row][mid]>target){
                 end = mid - 1;
             }else{
                 start = mid + 1;
@@ -16,18 +16,15 @@ public:
         return false;
     }
     bool searchMatrix(vector<vector<int>>& matrix, int target) {
-        int rows = matrix.size();
-        int cols = matrix[0].size();
-        int start = 0;
-        int end = rows - 1;
-        while(start<=end){
-            int mid = start + (end-start)/2;
-            if(target>=matrix[mid][0] && target<=matrix[mid][cols-1]){
-                return search(mid,matrix,target);
-            }else if(target<matrix[mid][0]){
-                end = mid -1;
+        int m = matrix.size();
+        int n = matrix[0].size();
+        int start_row = 0;
+        int end_row = m-1;
+        while(start_row<=end_row){
+            if(target>=matrix[start_row][0] && target<=matrix[start_row][n-1]){
+                return bst(start_row,matrix,target);
             }else{
-                start = mid + 1;
+                start_row++;
             }
         }
         return false;
