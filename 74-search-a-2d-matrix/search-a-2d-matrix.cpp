@@ -21,10 +21,13 @@ public:
         int start_row = 0;
         int end_row = m-1;
         while(start_row<=end_row){
-            if(target>=matrix[start_row][0] && target<=matrix[start_row][n-1]){
-                return bst(start_row,matrix,target);
+            int mid = start_row + (end_row-start_row)/2;
+            if(target>=matrix[mid][0] && target<=matrix[mid][n-1]){
+                return bst(mid,matrix,target);
+            }else if(target<matrix[mid][0]){
+                end_row = mid - 1;
             }else{
-                start_row++;
+                start_row = mid + 1;
             }
         }
         return false;
