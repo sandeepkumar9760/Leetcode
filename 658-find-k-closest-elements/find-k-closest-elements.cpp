@@ -19,11 +19,6 @@ public:
                 if(pq.top().first>dif){
                     pq.pop();
                     pq.push({dif,arr[i]});
-                }else if(pq.top().first==dif){
-                    if(pq.top().second>arr[i]){
-                        pq.pop();
-                        pq.push({dif,arr[i]});
-                    }
                 }
             }
         }
