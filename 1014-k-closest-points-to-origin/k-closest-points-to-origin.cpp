@@ -4,7 +4,7 @@ public:
         priority_queue<pair<double,vector<int>>>pq;
         int size = points.size();
         for (int i = 0; i < size; i++) {
-            double dist = (points[i][0]*points[i][0]) + (points[i][1]*points[i][1]);
+            int dist = (points[i][0]*points[i][0]) + (points[i][1]*points[i][1]);
             if(pq.size()!=k){
                 pq.push({dist,points[i]});
             }else{
