@@ -1,10 +1,10 @@
 class Solution {
 public:
     string removeOccurrences(string s, string part) {
-        int index = s.find(part);
-        while(index>=0 && index<s.length()){
-            s.erase(index , part.length());
-            index = s.find(part);
+        int idx = s.find(part);
+        while(idx>=0){
+            s.erase(idx,part.size());
+            idx = s.find(part);
         }
         return s;
     }
