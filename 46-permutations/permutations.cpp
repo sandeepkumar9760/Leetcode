@@ -1,19 +1,19 @@
 class Solution {
 public:
-    void getperms(vector<int>& nums , vector<vector<int>>& ans , int index){
-        if(index==nums.size()){
-            ans.push_back({nums});
+    void solve(int idx , vector<vector<int>>&ans , vector<int>&nums){
+        if(idx==nums.size()){
+            ans.push_back(nums);
             return;
         }
-        for(int i=index; i<nums.size(); i++){
-            swap(nums[index],nums[i]);
-            getperms(nums,ans,index+1);
-            swap(nums[index],nums[i]);
+        for(int i=idx;i<nums.size();i++){
+           swap(nums[i],nums[idx]);
+           solve(idx+1,ans,nums);
+           swap(nums[i],nums[idx]);
         }
     }
     vector<vector<int>> permute(vector<int>& nums) {
         vector<vector<int>>ans;
-        getperms(nums,ans,0);
+        solve(0,ans,nums);
         return ans;
     }
 };
