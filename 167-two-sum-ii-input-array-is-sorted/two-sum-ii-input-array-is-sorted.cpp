@@ -7,13 +7,12 @@ public:
             int sum = numbers[start]+numbers[end];
             if(sum==target){
                 return {start+1,end+1};
-            }
-            if(sum<target){
-                start++;
-            }else{
+            }else if(sum>target){
                 end--;
+            }else{
+                start++;
             }
         }
-        return {0,0};
+        return {-1,-1};
     }
 };
