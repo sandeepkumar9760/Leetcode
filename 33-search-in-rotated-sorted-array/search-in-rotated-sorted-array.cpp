@@ -8,16 +8,16 @@ public:
             if(nums[mid]==target){
                 return mid;
             }else if(nums[start]<=nums[mid]){
-                if(target>=nums[start] && target<=nums[mid]){
-                    end = mid -1;
+                if(nums[start]<=target && nums[mid]>=target){
+                    end = mid - 1;
                 }else{
-                    start = mid+1;
+                    start = mid + 1;
                 }
-            }else {
+            }else{
                 if(nums[mid]<=target && nums[end]>=target){
-                    start = mid+1;
+                    start = mid + 1;
                 }else{
-                    end = mid-1;
+                    end = mid - 1;
                 }
             }
         }
