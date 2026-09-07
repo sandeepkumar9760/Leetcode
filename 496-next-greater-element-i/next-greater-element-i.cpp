@@ -16,11 +16,16 @@ public:
                 st.push(nums2[i]);
             }
         }
-        vector<int>ans;
+        // vector<int>ans;
+        // for(int i=0;i<nums1.size();i++){
+        //     ans.push_back(res[nums1[i]]);
+        // }
+        // return ans;
+
         for(int i=0;i<nums1.size();i++){
-            ans.push_back(res[nums1[i]]);
+            nums1[i]=res[nums1[i]];
         }
-        return ans;
-       
+        return nums1;
+
     }
 };
