@@ -1,25 +1,23 @@
 class Solution {
 public:
-    struct compare {
-        bool operator()(const pair<int,int>&a , const pair<int,int>&b){
-            return a.second > b.second;
-        }
-    };
     vector<int> topKFrequent(vector<int>& nums, int k) {
-        priority_queue<pair<int, int>, vector<pair<int, int>>, compare> pq;
-        unordered_map<int, int> map;
-        for (int i = 0; i < nums.size(); i++) {
+        unordered_map<int,int>map;
+        int size = nums.size();
+        for(int i=0;i<size;i++){
             map[nums[i]]++;
         }
+        vector<vector<int>>bucket(size+1);
         for(auto &it : map){
-            pq.push({it.first , it.second});
-            if(pq.size()>k) pq.pop();
+            bucket[it.second].push_back(it.first);
         }
         vector<int>ans;
-        
-        while(!pq.empty()){
-            ans.push_back(pq.top().first);
-            pq.pop();
+        for(int i=bucket.size()-1; i>=1; i--){
+            for(auto &it : bucket[i]){
+                ans.push_back(it);
+                if(ans.size()==k){
+                    return ans;
+                }
+            }
         }
         return ans;
     }
