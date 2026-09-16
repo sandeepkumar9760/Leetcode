@@ -1,27 +1,23 @@
 class Solution {
 public:
-    set<vector<int>>s;
-    void helper(vector<int>& candidates , vector<int>& comb, vector<vector<int>>& ans , int index , int target){
-        if(target==0){
-            if(s.find(comb)==s.end()){
-                ans.push_back({comb});
-                s.insert(comb);
-                return;
-            }
-        }
-        if(target<0 || index==candidates.size()){
+    void solve(vector<int>& candidates , int target , int crr_sum , vector<int>&crr_arr , vector<vector<int>>&ans, int idx){
+        if(crr_sum==target){
+            ans.push_back(crr_arr);
             return;
         }
-        comb.push_back(candidates[index]);
-        helper(candidates , comb , ans , index+1 , target-candidates[index]);
-        helper(candidates , comb , ans , index , target-candidates[index]);
-        comb.pop_back();
-        helper(candidates , comb , ans , index+1 , target);
+        if(idx>=candidates.size() || crr_sum>target){
+            return;
+        }
+        crr_arr.push_back(candidates[idx]);
+        solve(candidates,target,crr_sum+candidates[idx],crr_arr,ans,idx);
+        crr_arr.pop_back();
+        solve(candidates,target,crr_sum,crr_arr,ans,idx+1);
     }
     vector<vector<int>> combinationSum(vector<int>& candidates, int target) {
+        vector<int>crr_arr;
         vector<vector<int>>ans;
-        vector<int>comb;
-        helper(candidates , comb ,ans , 0 , target);
+        solve(candidates,target,0,crr_arr,ans,0);
         return ans;
+
     }
 };
