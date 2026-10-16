@@ -2,20 +2,14 @@ class Solution {
 public:
     bool isAnagram(string s, string t) {
         if(s.size()!=t.size()) return false;
-        unordered_map<char,int>map1;
-        unordered_map<char,int>map2;
+        vector<int>word1(26,0);
+        vector<int>word2(26,0);
         for(int i=0;i<s.size();i++){
-            map1[s[i]]++;
-            map2[t[i]]++;
+            word1[s[i]-'a']++;
+            word2[t[i]-'a']++;
         }
-        for(auto &it : map1){
-            if(map2.find(it.first)!=map2.end()){
-                if(it.second!=map2[it.first]){
-                    return false;
-                }
-            }else{
-                return false;
-            }
+        for(int i=0;i<26;i++){
+            if(word1[i]!=word2[i]) return false;
         }
         return true;
     }
