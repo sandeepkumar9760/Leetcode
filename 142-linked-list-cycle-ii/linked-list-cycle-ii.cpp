@@ -2,7 +2,7 @@
  * Definition for singly-linked list.
  * struct ListNode {
  *     int val;
- *     ListNode *nex;
+ *     ListNode *next;
  *     ListNode(int x) : val(x), next(NULL) {}
  * };
  */
@@ -11,16 +11,14 @@ public:
     ListNode *detectCycle(ListNode *head) {
         ListNode* slow = head;
         ListNode* fast = head;
-        while(fast!=NULL && fast->next!=NULL){
+        while(fast && fast->next){
             slow = slow->next;
             fast = fast->next->next;
-            if(slow==fast){
-                break;
-            }
+            if(fast==slow) break;
         }
-        if(fast==NULL || fast->next==NULL) return NULL;
-        slow = head;
-        while(slow!=fast){
+        if(fast == nullptr || fast->next == nullptr) return nullptr;
+        fast = head;
+        while(fast!=slow){
             slow = slow->next;
             fast = fast->next;
         }
