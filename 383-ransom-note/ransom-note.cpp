@@ -2,19 +2,17 @@ class Solution {
 public:
     bool canConstruct(string ransomNote, string magazine) {
         unordered_map<char,int>map;
-        for(char c : magazine){
-            map[c]++;
+        for(int i=0;i<magazine.size();i++){
+            map[magazine[i]]++;
         }
-        unordered_map<char,int>map2;
-        for(char c:ransomNote){
-            map2[c]++;
-        }
-        // bool result = false;
-        for(int i=0;i<ransomNote.size(); i++){
-            if(map2[ransomNote[i]]<=map[ransomNote[i]]){
-                continue;
-            }else{
+        for(int i=0;i<ransomNote.size();i++){
+            if(map.find(ransomNote[i])==map.end()){
                 return false;
+            }else{
+                map[ransomNote[i]]--;
+                if(map[ransomNote[i]]==0){
+                    map.erase(ransomNote[i]);
+                }
             }
         }
         return true;
